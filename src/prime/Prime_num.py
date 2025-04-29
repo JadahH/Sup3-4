@@ -4,7 +4,12 @@ import sys
 import time
 import unittest
 
+"""
+    Determine if a number is prime.
 
+    :param n: Integer to test for primality.
+    :return: True if n is a prime number, False otherwise.
+"""
 def if_prime(n: int) -> bool:
     if n <= 1:
         return False
