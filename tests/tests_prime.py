@@ -1,4 +1,4 @@
-from prime import if_prime, range_split
+from prime import if_prime, range_split, subrange
 
 def test_if_prime_small(self):
         self.assertFalse(if_prime(0))
@@ -17,3 +17,8 @@ def test_range_uneven(self):
         rngs = range_split(1, 11, 4)
         # 11 numbers, 4 chunks → sizes 3,3,3,2
         self.assertEqual(rngs, [(1,3),(4,6),(7,9),(10,11)])
+
+def test_subrange(self):
+        # primes between 10–20
+        self.assertEqual(subrange((10,20)),
+                         [11,13,17,19])
