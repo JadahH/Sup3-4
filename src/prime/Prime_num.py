@@ -31,3 +31,6 @@ def range_split(start: int, end: int, chunks: int) -> list[tuple[int, int]]:
         ranges.append((sub_start, sub_end))
         cur = sub_end + 1
     return ranges
+
+def subrange():
+    pass
