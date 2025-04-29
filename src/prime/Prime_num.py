@@ -19,5 +19,15 @@ def if_prime(n: int) -> bool:
         i += 2
     return True
 
-def range_split():
-    pass
+def range_split(start: int, end: int, chunks: int) -> list[tuple[int, int]]:
+    total = end - start + 1
+    base, extra = divmod(total, chunks)
+    ranges = []
+    cur = start
+    for i in range(chunks):
+        size = base + (1 if i < extra else 0)
+        sub_start = cur
+        sub_end = cur + size - 1
+        ranges.append((sub_start, sub_end))
+        cur = sub_end + 1
+    return ranges
