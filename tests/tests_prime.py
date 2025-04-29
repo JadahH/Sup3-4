@@ -8,7 +8,12 @@ def test_if_prime_small(self):
         self.assertFalse(if_prime(4))
         self.assertTrue(if_prime(13))
 
-def test_split_range_even(self):
+def test_range_even(self):
         rngs = range_split(1, 10, 5)
         # total 10 numbers, 5 chunks → each size 2
         self.assertEqual(rngs, [(1,2),(3,4),(5,6),(7,8),(9,10)])
+
+def test_range_uneven(self):
+        rngs = range_split(1, 11, 4)
+        # 11 numbers, 4 chunks → sizes 3,3,3,2
+        self.assertEqual(rngs, [(1,3),(4,6),(7,9),(10,11)])
