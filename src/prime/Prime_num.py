@@ -19,3 +19,5 @@ def if_prime(n: int) -> bool:
         i += 2
     return True
 
+def range_split():
+    pass
