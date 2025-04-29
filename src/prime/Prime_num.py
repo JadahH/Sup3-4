@@ -24,6 +24,15 @@ def if_prime(n: int) -> bool:
         i += 2
     return True
 
+"""
+    Split a contiguous range [start, end] into a number of sub-ranges.
+
+    :param start: Beginning of the range (inclusive).
+    :param end: End of the range (inclusive).
+    :param chunks: Number of sub-ranges to create.
+    :return: List of (sub_start, sub_end) tuples, covering the full range.
+"""
+
 def range_split(start: int, end: int, chunks: int) -> list[tuple[int, int]]:
     total = end - start + 1
     base, extra = divmod(total, chunks)
