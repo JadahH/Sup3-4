@@ -68,6 +68,12 @@ def run_tests():
     result = runner.run(suite)
     sys.exit(0 if result.wasSuccessful() else 1)
 
+"""
+    Parse command-line arguments, split the overall range, and dispatch workers.
+
+    If --test is given, run the test suite instead of the prime search.
+"""
+
 def main():
     parser = argparse.ArgumentParser(description="Find primes in a range using multiprocessing.")
     parser.add_argument('start',   type=int,                        help="Start of range (inclusive)")
