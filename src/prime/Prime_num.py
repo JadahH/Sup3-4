@@ -46,6 +46,13 @@ def range_split(start: int, end: int, chunks: int) -> list[tuple[int, int]]:
         cur = sub_end + 1
     return ranges
 
+"""
+    Find all primes within a given sub-range.
+
+    :param rng: Tuple (sub_start, sub_end) defining an inclusive range.
+    :return: List of prime numbers in that range.
+"""
+
 def subrange(rng: tuple[int, int]) -> list[int]:
     sub_start, sub_end = rng
     return [n for n in range(sub_start, sub_end + 1) if if_prime(n)]
