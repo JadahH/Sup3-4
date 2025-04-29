@@ -42,3 +42,34 @@ def run_tests():
     runner = unittest.TextTestRunner(verbosity=2)
     result = runner.run(suite)
     sys.exit(0 if result.wasSuccessful() else 1)
+
+def main():
+    parser = argparse.ArgumentParser(description="Find primes in a range using multiprocessing.")
+    parser.add_argument('start',   type=int,                        help="Start of range (inclusive)")
+    parser.add_argument('end',     type=int,                        help="End of range (inclusive)")
+    parser.add_argument('procs',   type=int,                        help="Number of worker processes")
+    parser.add_argument('--test',  action='store_true',             help="Run built-in test suite and exit")
+    args = parser.parse_args()
+
+    if args.test:
+        run_tests()
+
+    if args.start > args.end or args.procs < 1:
+        parser.error("Ensure start ≤ end and procs ≥ 1")
+
+    t0 = time.time()
+
+    ranges = range_split(args.start, args.end, args.procs)
+    with multiprocessing.Pool(processes=args.procs) as pool:
+        results = pool.map(subrange, ranges)
+
+    # flatten and sort
+    primes = sorted(p for sublist in results for p in sublist)
+    elapsed = time.time() - t0
+
+    print(primes)
+    print(f"\nFound {len(primes)} primes in {elapsed:.2f} seconds "
+          f"using {args.procs} process{'es' if args.procs>1 else ''}.")
+
+if __name__ == '__main__':
+    main()
